@@ -1,0 +1,28 @@
+server:
+  port: ${GATEWAY_PORT:8080}
+
+spring:
+  application:
+    name: api-gateway
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
+  endpoint:
+    health:
+      show-details: when_authorized
+
+sentinal:
+  gateway:
+    security:
+      jwt-enabled: ${GATEWAY_JWT_ENABLED:false}
+    cors:
+      allowed-origins: ${GATEWAY_ALLOWED_ORIGINS:http://localhost:3000,http://localhost:5173}
+    services:
+      auth-url: ${AUTH_SERVICE_URL:http://localhost:8081}
+      instance-url: ${INSTANCE_SERVICE_URL:http://localhost:8082}
+      monitoring-url: ${MONITORING_SERVICE_URL:http://localhost:8083}
+      incident-url: ${INCIDENT_SERVICE_URL:http://localhost:8084}
+      ai-url: ${SENTINAL_AI_URL:http://localhost:8000}
