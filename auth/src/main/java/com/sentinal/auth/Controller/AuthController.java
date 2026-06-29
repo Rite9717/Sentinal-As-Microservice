@@ -17,11 +17,18 @@ import java.util.Optional;
 public class AuthController
 {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    private JwtUtil jwtUtil;
+    private final JwtUtil jwtUtil;
 
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+
+    public AuthController(UserRepository userRepository, JwtUtil jwtUtil, PasswordEncoder passwordEncoder)
+    {
+        this.userRepository = userRepository;
+        this.jwtUtil = jwtUtil;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @GetMapping("/test")
     public String test()
@@ -38,19 +45,17 @@ public class AuthController
 
         User user = new User();
         user.setEmail(register.getEmail());
+        user.setUsername(register.getEmail());
         user.setFirstName(register.getFirstName());
         user.setLastName(register.getLastName());
         user.setPassword(passwordEncoder.encode(register.getPassword()));
         user.setToken(null);
+        user = userRepository.save(user);
 
-        // Generate token before saving
         String token = jwtUtil.generateToken(user.getEmail(), user.getId(), user.getFirstName());
         user.setToken(token);
-
-        // Save user to database
         userRepository.save(user);
 
-        // Create response
         Response response = new Response(token, user.getEmail(), user.getFirstName(), user.getId());
 
         return ResponseEntity.ok().body(response);
@@ -73,6 +78,7 @@ public class AuthController
         user.setToken(null);
         String token=jwtUtil.generateToken(user.getEmail(),user.getId(),user.getFirstName());
         user.setToken(token);
+        userRepository.save(user);
 
         Response response=new Response(token,user.getEmail(),user.getFirstName(),user.getId());
         return ResponseEntity.ok().body(response);
