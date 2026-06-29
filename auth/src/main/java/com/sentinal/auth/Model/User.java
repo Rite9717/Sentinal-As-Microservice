@@ -24,11 +24,11 @@ public class User
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, unique = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = true)
-    private String token;
+    @Column(nullable = false)
+    private String role = "USER";
 
     
 }

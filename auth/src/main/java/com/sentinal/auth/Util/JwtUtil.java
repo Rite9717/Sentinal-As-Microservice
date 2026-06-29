@@ -3,6 +3,7 @@ package com.sentinal.auth.Util;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -16,8 +17,11 @@ public class JwtUtil {
 
     // Secret key for signing JWT - MUST be at least 32 characters for HS256
     // In production, use environment variable or secure key management!
-    private static final String SECRET_KEY = "YourSuperSecretKeyForJWTTokenGenerationMustBeAtLeast32Characters";
-    private static final long EXPIRATION_TIME = 86400000; // 24 hours in milliseconds
+    @Value("${sentinal.jwt.secret}")
+    private String SECRET_KEY;
+
+    @Value(("${sentinal.jwt.expiration-ms"))
+    private long EXPIRATION_TIME;
 
     private SecretKey getSigningKey() {
         // Create a proper HMAC-SHA key from the secret
@@ -25,10 +29,11 @@ public class JwtUtil {
     }
 
     // Generate JWT token
-    public String generateToken(String email, Long userId, String name) {
+    public String generateToken(String email, Long userId, String name, String role) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", userId);
         claims.put("name", name);
+        claims.put("role", role);
 
         return Jwts.builder()
                 .claims(claims)

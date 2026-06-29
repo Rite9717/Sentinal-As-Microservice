@@ -26,3 +26,5 @@ sentinal:
       monitoring-url: ${MONITORING_SERVICE_URL:http://localhost:8083}
       incident-url: ${INCIDENT_SERVICE_URL:http://localhost:8084}
       ai-url: ${SENTINAL_AI_URL:http://localhost:8000}
+  jwt:
+    secret: "${JWT_SECRET:KzoAoOXsENdpf0FXSb17D7jtb4c36JFNM0AtpKf0nMg=}"
