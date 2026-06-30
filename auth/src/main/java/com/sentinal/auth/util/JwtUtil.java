@@ -1,4 +1,4 @@
-package com.sentinal.auth.Util;
+package com.sentinal.auth.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

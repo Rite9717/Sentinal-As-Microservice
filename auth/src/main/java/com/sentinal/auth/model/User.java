@@ -1,4 +1,4 @@
-package com.sentinal.auth.Model;
+package com.sentinal.auth.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,8 +1,8 @@
-package com.sentinal.auth.Controller;
+package com.sentinal.auth.controller;
 
-import com.sentinal.auth.DTO.Login;
-import com.sentinal.auth.DTO.Register;
-import com.sentinal.auth.Service.AuthService;
+import com.sentinal.auth.dto.Login;
+import com.sentinal.auth.dto.Register;
+import com.sentinal.auth.service.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

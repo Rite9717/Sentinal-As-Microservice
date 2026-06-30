@@ -1,4 +1,4 @@
-package com.sentinal.auth.Config;
+package com.sentinal.auth.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

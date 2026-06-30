@@ -1,7 +1,7 @@
-package com.sentinal.auth.Config;
+package com.sentinal.auth.config;
 
-import com.sentinal.auth.Model.User;
-import com.sentinal.auth.Repository.UserRepository;
+import com.sentinal.auth.model.User;
+import com.sentinal.auth.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

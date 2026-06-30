@@ -1,4 +1,4 @@
-package com.sentinal.instance.Controller;
+package com.sentinal.instance.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;

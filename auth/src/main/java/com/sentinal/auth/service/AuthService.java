@@ -1,11 +1,11 @@
-package com.sentinal.auth.Service;
+package com.sentinal.auth.service;
 
-import com.sentinal.auth.DTO.Login;
-import com.sentinal.auth.DTO.Register;
-import com.sentinal.auth.DTO.Response;
-import com.sentinal.auth.Model.User;
-import com.sentinal.auth.Repository.UserRepository;
-import com.sentinal.auth.Util.JwtUtil;
+import com.sentinal.auth.dto.Login;
+import com.sentinal.auth.dto.Register;
+import com.sentinal.auth.dto.Response;
+import com.sentinal.auth.model.User;
+import com.sentinal.auth.repository.UserRepository;
+import com.sentinal.auth.util.JwtUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
