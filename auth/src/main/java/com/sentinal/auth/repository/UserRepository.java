@@ -1,6 +1,6 @@
-package com.sentinal.auth.Repository;
+package com.sentinal.auth.repository;
 
-import com.sentinal.auth.Model.User;
+import com.sentinal.auth.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

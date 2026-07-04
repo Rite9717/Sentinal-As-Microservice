@@ -20,7 +20,7 @@ public class JwtUtil {
     @Value("${sentinal.jwt.secret}")
     private String SECRET_KEY;
 
-    @Value(("${sentinal.jwt.expiration-ms"))
+    @Value(("${sentinal.jwt.expiration-ms}"))
     private long EXPIRATION_TIME;
 
     private SecretKey getSigningKey() {

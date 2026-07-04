@@ -1,4 +1,4 @@
-package com.sentinal.auth.DTO;
+package com.sentinal.auth.dto;
 
 import lombok.Data;
 
