@@ -1,3 +1,26 @@
+sserver:
+  port: 8083
+
 spring:
   application:
-    name: monitoring
+    name: monitoring-service
+
+  datasource:
+    url: ${MONITORING_DB_URL:jdbc:mysql://localhost:3306/sentinal_monitoring?createDatabaseIfNotExist=true}
+    username: ${MONITORING_DB_USERNAME:root}
+    password: ${MONITORING_DB_PASSWORD:ritesh85}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+sentinal:
+  services:
+    instance-service-url: ${INSTANCE_SERVICE_URL:http://localhost:8082}
+
+  monitoring:
+    fixed-delay-ms: 15000

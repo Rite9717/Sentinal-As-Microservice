@@ -69,4 +69,22 @@ public class InstanceController
         return ResponseEntity.ok(instanceService.getOnboarding(id, userId));
     }
 
+    @PostMapping("/{id}/iam/verify")
+    public ResponseEntity<Response> verifyIamRole(@PathVariable Long id, @RequestHeader("X-User-Id") Long userId)
+    {
+        return ResponseEntity.ok(instanceService.verifyIamRole(id, userId));
+    }
+
+    @PostMapping("/{id}/monitoring/verify")
+    public ResponseEntity<Response> verifyMonitoring(@PathVariable Long id, @RequestHeader("X-User-Id") Long userId)
+    {
+        return ResponseEntity.ok(instanceService.verifyMonitoring(id, userId));
+    }
+
+    @GetMapping("/internal/ready-for-monitoring")
+    public List<Response> listReadyForMonitoring()
+    {
+        return instanceService.listReadyForMonitoring();
+    }
+
 }
