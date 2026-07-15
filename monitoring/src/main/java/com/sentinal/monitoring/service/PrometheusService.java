@@ -18,6 +18,13 @@ public class PrometheusService {
 
     public MetricValues collectMetrics(InstanceDto instance) {
         try {
+            if (instance.getPrometheusUrl() == null || instance.getPrometheusUrl().isBlank()) {
+                return MetricValues.builder()
+                        .valid(false)
+                        .errorMessage("Prometheus URL is not configured")
+                        .build();
+            }
+
             Double cpu = query(instance.getPrometheusUrl(),
                     "100 * (1 - avg(rate(node_cpu_seconds_total{mode=\"idle\"}[5m])))");
 
@@ -44,11 +51,14 @@ public class PrometheusService {
 
     private Double query(String prometheusUrl, String promql) {
         Map response = restClient.get()
-                .uri(prometheusUrl + "/api/v1/query?query={query}", promql)
+                .uri(prometheusUrl.replaceAll("/+$", "") + "/api/v1/query?query={query}", promql)
                 .retrieve()
                 .body(Map.class);
 
         try {
+            if (response == null) {
+                return null;
+            }
             Map data = (Map) response.get("data");
             var result = (java.util.List<?>) data.get("result");
 

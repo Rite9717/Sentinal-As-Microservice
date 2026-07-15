@@ -15,3 +15,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+
+sentinal:
+  aws:
+    region: ${AWS_REGION:us-east-1}

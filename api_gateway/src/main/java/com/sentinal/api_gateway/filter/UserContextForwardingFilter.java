@@ -17,7 +17,7 @@ public class UserContextForwardingFilter implements GlobalFilter, Ordered
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain)
     {
         return exchange.getPrincipal()
-                .cast(JwtAuthenticationToken.class)
+                .ofType(JwtAuthenticationToken.class)
                 .map(authentication -> {
                     String userId = claimAsString(authentication, "userId");
                     String email = authentication.getToken().getSubject();

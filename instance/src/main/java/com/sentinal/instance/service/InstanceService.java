@@ -106,7 +106,7 @@ public class InstanceService
         instance.setPrometheusUrl(request.getPrometheusUrl());
         instance.setGrafanaUrl(request.getGrafanaUrl());
         instance.setNodeExporterStatus(request.getNodeExporterStatus());
-        instance.setOnboardingState("READY_FOR_MONITORING");
+        instance.setOnboardingState("MONITORING_SUBMITTED");
         instance.setUpdatedAt(LocalDateTime.now());
 
         return toResponse(instanceRepository.save(instance));
@@ -163,7 +163,7 @@ public class InstanceService
         response.setName(instance.getName());
         response.setState(instance.getState());
         response.setCreatedAt(instance.getCreatedAt());
-        response.setOnboardingState(instance.getState());
+        response.setOnboardingState(instance.getOnboardingState());
         response.setRoleArn(instance.getRoleArn());
         response.setExternalId(instance.getExternalId());
         response.setPrometheusUrl(instance.getPrometheusUrl());

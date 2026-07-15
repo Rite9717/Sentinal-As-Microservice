@@ -21,9 +21,10 @@ public class InstanceClient {
     }
 
     public List<InstanceDto> getReadyInstances() {
-        return restClient.get()
+        List<InstanceDto> instances = restClient.get()
                 .uri(instanceServiceUrl + "/api/instances/internal/ready-for-monitoring")
                 .retrieve()
                 .body(new ParameterizedTypeReference<List<InstanceDto>>() {});
+        return instances == null ? List.of() : instances;
     }
 }

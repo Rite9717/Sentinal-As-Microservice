@@ -1,4 +1,4 @@
-sserver:
+server:
   port: 8083
 
 spring:
@@ -23,4 +23,5 @@ sentinal:
     instance-service-url: ${INSTANCE_SERVICE_URL:http://localhost:8082}
 
   monitoring:
+    scheduler-enabled: ${MONITORING_SCHEDULER_ENABLED:true}
     fixed-delay-ms: 15000
